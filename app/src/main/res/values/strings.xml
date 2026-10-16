@@ -1,14 +1,19 @@
 <resources>
     <string name="app_name">Tugas 5 Biodata</string>
-</resources>
+
 
     <!-- Judul Form -->
     <string name="form_title">Form Biodata</string>
     <string name="form_subtitle">Silahkan isi biodata Anda dibawah ini!! </string>
 
     <!-- Placeholder Input -->
-<string name="hint_first_name">Nama Depan</string>
-<string name="hint_last_name">Nama Belakang</string>
-<string name="hint_email">Email</string>
-<string name="hint_birth_date">Tgl Lahir</string>
-<string name="hint_experience">Experience</string>
+    <string name="hint_first_name">Nama Depan</string>
+    <string name="hint_last_name">Nama Belakang</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_birth_date">Tgl Lahir</string>
+    <string name="hint_experience">Experience</string>
+
+    <!-- Pilihan Experience -->
+    <string name="exp_pemula">Pemula</string>
+    <string name="exp_menengah">Menengah</string>
+    <string name="exp_expert">Expert</string>
