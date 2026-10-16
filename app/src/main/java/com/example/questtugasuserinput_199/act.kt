@@ -288,3 +288,14 @@ fun BiodataScreen() {
                             fontSize = 12.sp
                         )
                     }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Checkbox(
+                            checked = isWebChecked,
+                            onCheckedChange = { isWebChecked = it }
+                        )
+                        Text(
+                            text = stringResource(id = R.string.skill_web),
+                            fontSize = 12.sp
+                        )
+                    }
+                }
