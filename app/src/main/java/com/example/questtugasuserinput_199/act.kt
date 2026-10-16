@@ -38,7 +38,9 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -249,3 +251,13 @@ fun BiodataScreen() {
                         }
                     }
                 }
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = stringResource(id = R.string.label_skills),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = dimensionResource(id = R.dimen.text_size_body).value.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp)
+                )
