@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -319,9 +320,9 @@ fun BiodataScreen() {
                     fontWeight = FontWeight.Bold,
                     fontSize = dimensionResource(id = R.dimen.text_size_button).value.sp
                 )
-                }
+                
             }
-            showDialog) {
+           (showDialog) {
             val selectedSkills = buildList {
                 if (isAndroidChecked) add(stringResource(id = R.string.skill_android))
                 if (isUiUxChecked) add(stringResource(id = R.string.skill_ui_ux))
@@ -339,4 +340,17 @@ fun BiodataScreen() {
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp
                     )
+                },
+                text = {
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Text(text = "Nama: $firstName $lastName", fontSize = 14.sp)
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(text = "Email: $email", fontSize = 14.sp)
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(text = "Tanggal lahir: $birthDate", fontSize = 14.sp)
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(text = "Experience: $experience", fontSize = 14.sp)
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(text = "Skill: $skillsText", fontSize = 14.sp)
+                    }
                 },
