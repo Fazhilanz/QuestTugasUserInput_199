@@ -216,3 +216,10 @@ fun BiodataScreen() {
                             onExpandedChange = { expanded = !expanded },
                             modifier = Modifier.weight(1f)
                         ) {
+                            OutlinedTextField(
+                                value = experience,
+                                onValueChange = {},
+                                readOnly = true,
+                                placeholder = {
+                                    Text(stringResource(id = R.string.hint_experience))
+                                },                        }
