@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -320,3 +321,22 @@ fun BiodataScreen() {
                 )
                 }
             }
+            showDialog) {
+            val selectedSkills = buildList {
+                if (isAndroidChecked) add(stringResource(id = R.string.skill_android))
+                if (isUiUxChecked) add(stringResource(id = R.string.skill_ui_ux))
+                if (isWebChecked) add(stringResource(id = R.string.skill_web))
+            }
+            val skillsText = selectedSkills.joinToString(", ").ifBlank { "-" }
+
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                shape = RoundedCornerShape(24.dp),
+                containerColor = colorResource(id = R.color.card_background),
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.dialog_title),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
+                    )
+                },
