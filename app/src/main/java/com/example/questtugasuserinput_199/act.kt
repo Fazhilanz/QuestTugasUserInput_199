@@ -102,3 +102,24 @@ fun BiodataScreen() {
                 ),
                 elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
             ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = dimensionResource(id = R.dimen.screen_padding))
+                        .padding(top = 32.dp, bottom = dimensionResource(id = R.dimen.screen_padding)),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.form_title),
+                        fontSize = dimensionResource(id = R.dimen.text_size_title).value.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colorResource(id = R.color.purple_container_text)
+                    )
+
+                    Text(
+                        text = stringResource(id = R.string.form_subtitle),
+                        fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
+                        color = colorResource(id = R.color.text_subtitle),
+                        modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
+                    )
+
