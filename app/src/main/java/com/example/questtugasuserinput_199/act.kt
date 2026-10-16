@@ -142,6 +142,7 @@ fun BiodataScreen() {
                         color = colorResource(id = R.color.text_subtitle),
                         modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
                     )
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -168,6 +169,7 @@ fun BiodataScreen() {
                             singleLine = true
                         )
                     }
+
                     Spacer(modifier = Modifier.height(12.dp))
 
                     OutlinedTextField(
@@ -182,44 +184,46 @@ fun BiodataScreen() {
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) { Box(modifier = Modifier.weight(1f)) {
-                        OutlinedTextField(
-                            value = birthDate,
-                            onValueChange = {},
-                            readOnly = true,
-                            placeholder = {
-                                Text(stringResource(id = R.string.hint_birth_date))
-                            },
-                            trailingIcon = {
-                                Icon(
-                                    painter = painterResource(
-                                        id = android.R.drawable.ic_menu_my_calendar
-                                    ),
-                                    contentDescription = "Kalender"
-                                )
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable { datePickerDialog.show() },
-                            enabled = false,
-                            colors = OutlinedTextFieldDefaults.colors(
-                                disabledTextColor = MaterialTheme.colorScheme.onSurface,
-                                disabledBorderColor = MaterialTheme.colorScheme.outline,
-                                disabledPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                                disabledTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
-                            ),
-                            shape = RoundedCornerShape(12.dp),
-                            singleLine = true
-                        )
-                        Box(
-                            modifier = Modifier
-                                .matchParentSize()
-                                .clickable { datePickerDialog.show() }
-                        )
-                    }
+                    ) {
+                        Box(modifier = Modifier.weight(1f)) {
+                            OutlinedTextField(
+                                value = birthDate,
+                                onValueChange = {},
+                                readOnly = true,
+                                placeholder = {
+                                    Text(stringResource(id = R.string.hint_birth_date))
+                                },
+                                trailingIcon = {
+                                    Icon(
+                                        painter = painterResource(
+                                            id = android.R.drawable.ic_menu_my_calendar
+                                        ),
+                                        contentDescription = "Kalender"
+                                    )
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { datePickerDialog.show() },
+                                enabled = false,
+                                colors = OutlinedTextFieldDefaults.colors(
+                                    disabledTextColor = MaterialTheme.colorScheme.onSurface,
+                                    disabledBorderColor = MaterialTheme.colorScheme.outline,
+                                    disabledPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    disabledTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
+                                ),
+                                shape = RoundedCornerShape(12.dp),
+                                singleLine = true
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .matchParentSize()
+                                    .clickable { datePickerDialog.show() }
+                            )
+                        }
 
                         ExposedDropdownMenuBox(
                             expanded = expanded,
@@ -232,141 +236,147 @@ fun BiodataScreen() {
                                 readOnly = true,
                                 placeholder = {
                                     Text(stringResource(id = R.string.hint_experience))
-                                },                        }
-                        trailingIcon = {
-                            ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-                        },
-                        modifier = Modifier
-                            .menuAnchor()
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp)
-                        )
-                        ExposedDropdownMenu(
-                            expanded = expanded,
-                            onDismissRequest = { expanded = false }
-                        ) {
-                            experienceOptions.forEach { selectionOption ->
-                                DropdownMenuItem(
-                                    text = { Text(selectionOption) },
-                                    onClick = {
-                                        experience = selectionOption
-                                        expanded = false
-                                    }
-                                )
+                                },
+                                trailingIcon = {
+                                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                                },
+                                modifier = Modifier
+                                    .menuAnchor()
+                                    .fillMaxWidth(),
+                                shape = RoundedCornerShape(12.dp)
+                            )
+                            ExposedDropdownMenu(
+                                expanded = expanded,
+                                onDismissRequest = { expanded = false }
+                            ) {
+                                experienceOptions.forEach { selectionOption ->
+                                    DropdownMenuItem(
+                                        text = { Text(selectionOption) },
+                                        onClick = {
+                                            experience = selectionOption
+                                            expanded = false
+                                        }
+                                    )
+                                }
                             }
                         }
                     }
-                }
-                Spacer(modifier = Modifier.height(16.dp))
 
-                Text(
-                    text = stringResource(id = R.string.label_skills),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = dimensionResource(id = R.dimen.text_size_body).value.sp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 8.dp)
-                )
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(
-                            checked = isAndroidChecked,
-                            onCheckedChange = { isAndroidChecked = it }
-                        )
-                        Text(
-                            text = stringResource(id = R.string.skill_android),
-                            fontSize = 12.sp
-                        )
-                    }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(
-                            checked = isUiUxChecked,
-                            onCheckedChange = { isUiUxChecked = it }
-                        )
-                        Text(
-                            text = stringResource(id = R.string.skill_ui_ux),
-                            fontSize = 12.sp
-                        )
-                    }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(
-                            checked = isWebChecked,
-                            onCheckedChange = { isWebChecked = it }
-                        )
-                        Text(
-                            text = stringResource(id = R.string.skill_web),
-                            fontSize = 12.sp
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
-                Button(
-                    onClick = { showDialog = true },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(dimensionResource(id = R.dimen.button_height)),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = colorResource(id = R.color.purple_primary),
-                        contentColor = colorResource(id = R.color.white)
-                    )
-                ) {Text(
-                    text = stringResource(id = R.string.btn_proceed),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = dimensionResource(id = R.dimen.text_size_button).value.sp
-                )
-                
-            }
-           (showDialog) {
-            val selectedSkills = buildList {
-                if (isAndroidChecked) add(stringResource(id = R.string.skill_android))
-                if (isUiUxChecked) add(stringResource(id = R.string.skill_ui_ux))
-                if (isWebChecked) add(stringResource(id = R.string.skill_web))
-            }
-            val skillsText = selectedSkills.joinToString(", ").ifBlank { "-" }
-
-            AlertDialog(
-                onDismissRequest = { showDialog = false },
-                shape = RoundedCornerShape(24.dp),
-                containerColor = colorResource(id = R.color.card_background),
-                title = {
                     Text(
-                        text = stringResource(id = R.string.dialog_title),
+                        text = stringResource(id = R.string.label_skills),
                         fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
+                        fontSize = dimensionResource(id = R.dimen.text_size_body).value.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 8.dp)
                     )
-                },
-                text = {
-                    Column(modifier = Modifier.fillMaxWidth()) {
-                        Text(text = "Nama: $firstName $lastName", fontSize = 14.sp)
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = "Email: $email", fontSize = 14.sp)
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = "Tanggal lahir: $birthDate", fontSize = 14.sp)
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = "Experience: $experience", fontSize = 14.sp)
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = "Skill: $skillsText", fontSize = 14.sp)
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(
+                                checked = isAndroidChecked,
+                                onCheckedChange = { isAndroidChecked = it }
+                            )
+                            Text(
+                                text = stringResource(id = R.string.skill_android),
+                                fontSize = 12.sp
+                            )
+                        }
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(
+                                checked = isUiUxChecked,
+                                onCheckedChange = { isUiUxChecked = it }
+                            )
+                            Text(
+                                text = stringResource(id = R.string.skill_ui_ux),
+                                fontSize = 12.sp
+                            )
+                        }
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(
+                                checked = isWebChecked,
+                                onCheckedChange = { isWebChecked = it }
+                            )
+                            Text(
+                                text = stringResource(id = R.string.skill_web),
+                                fontSize = 12.sp
+                            )
+                        }
                     }
-                },
-                confirmButton = {
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
                     Button(
-                        onClick = { showDialog = false },
+                        onClick = { showDialog = true },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(dimensionResource(id = R.dimen.button_height)),
                         shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(id = R.color.purple_primary)
+                            containerColor = colorResource(id = R.color.purple_primary),
+                            contentColor = colorResource(id = R.color.white)
                         )
                     ) {
-                        Text(text = stringResource(id = R.string.dialog_btn_close))
+                        Text(
+                            text = stringResource(id = R.string.btn_proceed),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = dimensionResource(id = R.dimen.text_size_button).value.sp
+                        )
+                    }
+
+                    if (showDialog) {
+                        val selectedSkills = buildList {
+                            if (isAndroidChecked) add(stringResource(id = R.string.skill_android))
+                            if (isUiUxChecked) add(stringResource(id = R.string.skill_ui_ux))
+                            if (isWebChecked) add(stringResource(id = R.string.skill_web))
+                        }
+                        val skillsText = selectedSkills.joinToString(", ").ifBlank { "-" }
+
+                        AlertDialog(
+                            onDismissRequest = { showDialog = false },
+                            shape = RoundedCornerShape(24.dp),
+                            containerColor = colorResource(id = R.color.card_background),
+                            title = {
+                                Text(
+                                    text = stringResource(id = R.string.dialog_title),
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 18.sp
+                                )
+                            },
+                            text = {
+                                Column(modifier = Modifier.fillMaxWidth()) {
+                                    Text(text = "Nama: $firstName $lastName", fontSize = 14.sp)
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(text = "Email: $email", fontSize = 14.sp)
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(text = "Tanggal lahir: $birthDate", fontSize = 14.sp)
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(text = "Experience: $experience", fontSize = 14.sp)
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(text = "Skill: $skillsText", fontSize = 14.sp)
+                                }
+                            },
+                            confirmButton = {
+                                Button(
+                                    onClick = { showDialog = false },
+                                    shape = RoundedCornerShape(12.dp),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = colorResource(id = R.color.purple_primary)
+                                    )
+                                ) {
+                                    Text(text = stringResource(id = R.string.dialog_btn_close))
+                                }
+                            }
+                        )
                     }
                 }
-            )
-           }
             }
         }
     }
+}
