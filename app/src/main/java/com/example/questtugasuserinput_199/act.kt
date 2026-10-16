@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -203,3 +204,15 @@ fun BiodataScreen() {
                             shape = RoundedCornerShape(12.dp),
                             singleLine = true
                         )
+                        Box(
+                            modifier = Modifier
+                                .matchParentSize()
+                                .clickable { datePickerDialog.show() }
+                        )
+                    }
+
+                        ExposedDropdownMenuBox(
+                            expanded = expanded,
+                            onExpandedChange = { expanded = !expanded },
+                            modifier = Modifier.weight(1f)
+                        ) {
