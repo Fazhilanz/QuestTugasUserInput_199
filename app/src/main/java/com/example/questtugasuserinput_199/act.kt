@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -177,4 +178,12 @@ fun BiodataScreen() {
                             readOnly = true,
                             placeholder = {
                                 Text(stringResource(id = R.string.hint_birth_date))
+                            },
+                            trailingIcon = {
+                                Icon(
+                                    painter = painterResource(
+                                        id = android.R.drawable.ic_menu_my_calendar
+                                    ),
+                                    contentDescription = "Kalender"
+                                )
                             },
