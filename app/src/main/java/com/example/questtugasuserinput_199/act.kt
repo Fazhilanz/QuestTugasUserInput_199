@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,4 +35,17 @@ fun BiodataScreen() {
         month,
         day
     )
+
+    var experience by remember { mutableStateOf("") }
+    var expanded by remember { mutableStateOf(false) }
+    val experienceOptions = listOf(
+        stringResource(id = R.string.exp_pemula),
+        stringResource(id = R.string.exp_menengah),
+        stringResource(id = R.string.exp_expert)
+    )
+
+    var isAndroidChecked by remember { mutableStateOf(false) }
+    var isUiUxChecked by remember { mutableStateOf(false) }
+    var isWebChecked by remember { mutableStateOf(false) }
+    var showDialog by remember { mutableStateOf(false) }
 
