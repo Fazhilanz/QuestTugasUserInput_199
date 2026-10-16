@@ -313,4 +313,10 @@ fun BiodataScreen() {
                         containerColor = colorResource(id = R.color.purple_primary),
                         contentColor = colorResource(id = R.color.white)
                     )
-                ) {
+                ) {Text(
+                    text = stringResource(id = R.string.btn_proceed),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = dimensionResource(id = R.dimen.text_size_button).value.sp
+                )
+                }
+            }
